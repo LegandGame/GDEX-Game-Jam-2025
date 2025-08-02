@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://cc3k8ucnvc52c"]
+
+[ext_resource type="Texture2D" uid="uid://bb01am4ciatkr" path="res://Assets/Textures/Kenny Tiny Dungeon/Tilemap/tilemap.png" id="1_yc460"]
+
+[node name="Villager" type="Node2D" groups=["Villager"]]
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_yc460")
+region_enabled = true
+region_rect = Rect2(17, 119, 16, 16)
