@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://bjw1td01p8w7e"]
+
+[ext_resource type="Script" uid="uid://b4o31h0a0m6tt" path="res://Entities/Enemies/enemy.gd" id="1_cxsjl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_365vq"]
+size = Vector2(15, 15)
+
+[node name="BaseEnemy" type="Node2D"]
+script = ExtResource("1_cxsjl")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("RectangleShape2D_365vq")
+
+[node name="FiringPorts" type="Node2D" parent="."]

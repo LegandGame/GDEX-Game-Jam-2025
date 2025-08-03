@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://duqwap5n3eqxx"]
+
+[ext_resource type="Texture2D" uid="uid://bb01am4ciatkr" path="res://Assets/Textures/Kenny Tiny Dungeon/Tilemap/tilemap.png" id="1_vkx67"]
+[ext_resource type="Script" uid="uid://dj2c7n1jnpfis" path="res://Entities/Bullet/bullet.gd" id="1_ymhw4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uv8ck"]
+size = Vector2(1, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vkx67"]
+size = Vector2(15, 15)
+
+[node name="Bullet" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_ymhw4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_uv8ck")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_vkx67")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_vkx67")
+region_enabled = true
+region_rect = Rect2(170, 153, 16, 16)
