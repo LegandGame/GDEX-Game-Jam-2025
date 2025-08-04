@@ -5,7 +5,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_365vq"]
 size = Vector2(15, 15)
 
-[node name="BaseEnemy" type="Node2D"]
+[node name="BaseEnemy" type="Node2D" groups=["Enemy"]]
 script = ExtResource("1_cxsjl")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

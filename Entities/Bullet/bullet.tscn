@@ -4,10 +4,10 @@
 [ext_resource type="Script" uid="uid://dj2c7n1jnpfis" path="res://Entities/Bullet/bullet.gd" id="1_ymhw4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uv8ck"]
-size = Vector2(1, 1)
+size = Vector2(4, 4)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vkx67"]
-size = Vector2(15, 15)
+size = Vector2(10, 10)
 
 [node name="Bullet" type="CharacterBody2D"]
 motion_mode = 1
@@ -25,3 +25,7 @@ shape = SubResource("RectangleShape2D_vkx67")
 texture = ExtResource("1_vkx67")
 region_enabled = true
 region_rect = Rect2(170, 153, 16, 16)
+
+[node name="Autokill" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://c5q85k6t887fh"]
+[gd_scene load_steps=12 format=4 uid="uid://c5q85k6t887fh"]
 
 [ext_resource type="Texture2D" uid="uid://bb01am4ciatkr" path="res://Assets/Textures/Kenny Tiny Dungeon/Tilemap/tilemap.png" id="1_cn6f1"]
 [ext_resource type="PackedScene" uid="uid://cc3k8ucnvc52c" path="res://Entities/Villager/villager.tscn" id="2_13say"]
@@ -6,14 +6,18 @@
 [ext_resource type="PackedScene" uid="uid://c6jigwx28n4r3" path="res://Entities/Enemies/enemy_rat_left.tscn" id="4_0jlma"]
 [ext_resource type="PackedScene" uid="uid://xs2wbn3avv1p" path="res://Entities/Enemies/enemy_wizard_right.tscn" id="5_gtcug"]
 [ext_resource type="PackedScene" uid="uid://dattyqmmiu2qi" path="res://Entities/Enemies/enemy_bat_up.tscn" id="6_rjhwy"]
+[ext_resource type="Script" uid="uid://dpqrhlipvn2h3" path="res://Environment/ManagerScripts/turn_manager.gd" id="7_gtcug"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_foneg"]
 texture = ExtResource("1_cn6f1")
 separation = Vector2i(1, 1)
 0:0/0 = 0
 1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 4:0/0 = 0
 5:0/0 = 0
 6:0/0 = 0
@@ -24,8 +28,11 @@ separation = Vector2i(1, 1)
 11:0/0 = 0
 0:1/0 = 0
 1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 3:1/0 = 0
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 4:1/0 = 0
 5:1/0 = 0
 6:1/0 = 0
@@ -36,8 +43,11 @@ separation = Vector2i(1, 1)
 11:1/0 = 0
 0:2/0 = 0
 1:2/0 = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 2:2/0 = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 3:2/0 = 0
+3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 4:2/0 = 0
 5:2/0 = 0
 6:2/0 = 0
@@ -144,6 +154,7 @@ separation = Vector2i(1, 1)
 11:10/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_13say"]
+physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_foneg")
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_cn6f1"]
@@ -168,3 +179,4 @@ tile_map_data = PackedByteArray("AAAOAAIAAAAAAAAAAQAOAAUAAAAAAAAAAAALAAgAAAAAAAA
 tile_set = SubResource("TileSet_foneg")
 
 [node name="TurnManager" type="Node" parent="."]
+script = ExtResource("7_gtcug")
