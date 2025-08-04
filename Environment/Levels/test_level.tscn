@@ -175,7 +175,7 @@ tile_map_data = PackedByteArray("AAAIAAAAAAABAAAAAAAIAAEAAAABAAEAAAAIAAIAAAABAAE
 tile_set = SubResource("TileSet_13say")
 
 [node name="PrebuiltLayer" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAAOAAIAAAAAAAAAAQAOAAUAAAAAAAAAAAALAAgAAAAAAAAAAAARAAgAAAAAAAAAAgAJAAUAAAAAAAAAAwAOAAoAAAAAAAAABAA=")
+tile_map_data = PackedByteArray("AAAOAAIAAAAAAAAAAQAOAAUAAAAAAAAAAAALAAgAAAAAAAAAAAARAAgAAAAAAAAAAgAJAAUAAAAAAAAAAwAOAAoAAAAAAAAABAAJAAEAAAAAAAAAAQA=")
 tile_set = SubResource("TileSet_foneg")
 
 [node name="TurnManager" type="Node" parent="."]

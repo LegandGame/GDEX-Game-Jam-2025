@@ -1,7 +1,6 @@
 class_name Enemy extends Node2D
 
 var bullet_scene := preload("res://Entities/Bullet/bullet.tscn")
-signal enemy_complete
 
 @onready var hitbox : Area2D = $Hitbox
 @onready var sprite : Sprite2D = $Sprite2D
@@ -28,7 +27,6 @@ func activate() -> void:
 		new_bullet.position += f.target_position
 		call_deferred("add_child", new_bullet)
 		await new_bullet.bullet_complete
-	enemy_complete.emit()
 
 
 func _on_hitbox_hit(_area : Area2D) -> void:

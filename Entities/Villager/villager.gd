@@ -9,11 +9,6 @@ signal villager_died()
 func _ready() -> void:
 	hitbox.area_entered.connect(_on_hitbox_hit)
 	
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
 func _on_hitbox_hit(area : Area2D) -> void:
 	die()
 
