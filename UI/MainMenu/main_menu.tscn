@@ -1,0 +1,57 @@
+[gd_scene load_steps=3 format=3 uid="uid://cy0uyasockblo"]
+
+[ext_resource type="Texture2D" uid="uid://xmwyn6cs21d6" path="res://Assets/Textures/Kenny Tiny Dungeon/Sample.png" id="1_jld46"]
+[ext_resource type="Script" uid="uid://d4eughhfktb6y" path="res://UI/MainMenu/main_menu.gd" id="1_t17p2"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_t17p2")
+
+[node name="Background" type="TextureRect" parent="."]
+modulate = Color(0.629675, 0.629675, 0.629675, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -31.0
+offset_top = -11.0
+offset_right = 50.0
+offset_bottom = 42.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_jld46")
+expand_mode = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="TitleCard" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Ouroboros
+Village"
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 24
+
+[node name="PlayButton" type="Button" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Play"
