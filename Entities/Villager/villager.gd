@@ -9,7 +9,7 @@ signal villager_died()
 func _ready() -> void:
 	hitbox.area_entered.connect(_on_hitbox_hit)
 	
-func _on_hitbox_hit(area : Area2D) -> void:
+func _on_hitbox_hit(_area : Area2D) -> void:
 	die()
 
 func die() -> void:

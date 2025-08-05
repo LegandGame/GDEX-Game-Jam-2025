@@ -146,4 +146,5 @@ sources/0 = SubResource("TileSetAtlasSource_mkrlt")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
+position = Vector2(8, 8)
 tile_set = SubResource("TileSet_5i21o")
