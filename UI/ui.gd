@@ -24,14 +24,45 @@ signal ui_building_button_pressed(number)
 func _ready() -> void:
 	play_button.pressed.connect(play_button_pressed)
 	reset_button.pressed.connect(reset_button_pressed)
+	
+	# the fuckery
+	b1.pressed.connect(bp1)
+	b2.pressed.connect(bp2)
+	b3.pressed.connect(bp3)
+	b4.pressed.connect(bp4)
+	b5.pressed.connect(bp5)
+	b6.pressed.connect(bp6)
+	b7.pressed.connect(bp7)
+	b8.pressed.connect(bp8)
+	b9.pressed.connect(bp9)
 
 func play_button_pressed() -> void:
 	ui_play_button_pressed.emit()
 
 func reset_button_pressed() -> void:
-	ui_reset_button_pressed
+	ui_reset_button_pressed.emit()
 
 func update_turn_count(current_turn : int, total_turn : int) -> void:
 	var new_string = "Turns: %d/%d"
 	new_string = new_string % [current_turn, total_turn]
 	turns_label.text = new_string
+
+# the fuckery part 2
+func bp1() -> void:
+	ui_building_button_pressed.emit(0)
+func bp2() -> void:
+	ui_building_button_pressed.emit(1)
+func bp3() -> void:
+	ui_building_button_pressed.emit(2)
+func bp4() -> void:
+	ui_building_button_pressed.emit(3)
+func bp5() -> void:
+	ui_building_button_pressed.emit(4)
+func bp6() -> void:
+	ui_building_button_pressed.emit(5)
+func bp7() -> void:
+	ui_building_button_pressed.emit(6)
+func bp8() -> void:
+	ui_building_button_pressed.emit(7)
+func bp9() -> void:
+	ui_building_button_pressed.emit(8)

@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://dklvalw3yqlma"]
+
+[ext_resource type="Script" uid="uid://bpojge0ee8qx4" path="res://Components/ConstructionManager/construction_manager.gd" id="1_pq3bw"]
+
+[node name="ConstructionManager" type="Node2D"]
+script = ExtResource("1_pq3bw")
+
+[node name="BuildPoint" type="Marker2D" parent="."]
+
+[node name="PreviewSprite" type="Sprite2D" parent="BuildPoint"]
+
+[node name="OverlapArea" type="Area2D" parent="BuildPoint"]
+collision_layer = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BuildPoint/OverlapArea"]

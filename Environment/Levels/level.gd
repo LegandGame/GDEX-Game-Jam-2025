@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var turn_manager := $TurnManager
 @onready var ui := $UI
+@onready var construction_manager := $ConstructionManager
 
 @export_category("Level Parameters")
 @export var turns_to_complete : int
@@ -9,9 +10,9 @@ var current_turn_count : int = 0
 enum TURN{ALLY, ACTIVATION, ENEMY}
 var current_turn_type : TURN = TURN.ALLY
 
-@export var defence_building_list : Array
+@export var defence_building_list : Array[ConstructInfo]
 
-@export var enemy_building_list : Array
+@export var enemy_building_list : Array[ConstructInfo]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -20,7 +21,14 @@ func _ready() -> void:
 
 func connect_signals() -> void:
 	ui.ui_play_button_pressed.connect(play)
+	ui.ui_reset_button_pressed.connect(reset_level)
+	ui.ui_building_button_pressed.connect(select_building)
 
+func reset_level() -> void:
+	get_tree().reload_current_scene()
+
+func _physics_process(delta: float) -> void:
+	construction_manager.update_build_point(get_viewport().get_mouse_position())
 
 # PLAY BUTTON FUNCTIONS
 # -----------------------------
@@ -63,3 +71,30 @@ func sort_enemy_list(a, b) -> bool:
 	else:
 		return false
 # -------------------------
+
+func select_building(slot : int) -> void:
+	# prevent out of bounds
+	match current_turn_type:
+		TURN.ALLY:
+			if slot >= defence_building_list.size():
+				construction_manager.unload_construct()
+				return
+		TURN.ENEMY:
+			if slot >= enemy_building_list.size():
+				construction_manager.unload_construct()
+				return
+	
+	var temp_con
+	match current_turn_type:
+		TURN.ALLY:
+			temp_con = defence_building_list[slot]
+		TURN.ENEMY:
+			temp_con = enemy_building_list[slot]
+	construction_manager.load_construct(temp_con)
+	
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton and event.is_pressed() and event.button_index == MOUSE_BUTTON_LEFT:
+		construction_manager.build_construct(
+			construction_manager.loaded_construct, 
+			construction_manager.align_to_grid(get_viewport().get_mouse_position()))
