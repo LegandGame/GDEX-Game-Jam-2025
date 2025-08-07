@@ -3,14 +3,17 @@
 [ext_resource type="Script" uid="uid://xsgci2shigke" path="res://Entities/Villager/villager.gd" id="1_ib0av"]
 [ext_resource type="Texture2D" uid="uid://bb01am4ciatkr" path="res://Assets/Textures/Kenny Tiny Dungeon/Tilemap/tilemap.png" id="1_yc460"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ib0av"]
-size = Vector2(15, 15)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_26ugb"]
 size = Vector2(5, 5)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ib0av"]
+size = Vector2(15, 15)
+
 [node name="Villager" type="StaticBody2D" groups=["Villager"]]
 script = ExtResource("1_ib0av")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_26ugb")
 
 [node name="Hitbox" type="Area2D" parent="."]
 
@@ -21,6 +24,3 @@ shape = SubResource("RectangleShape2D_ib0av")
 texture = ExtResource("1_yc460")
 region_enabled = true
 region_rect = Rect2(17, 119, 16, 16)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_26ugb")

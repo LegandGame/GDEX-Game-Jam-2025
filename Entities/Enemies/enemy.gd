@@ -4,6 +4,7 @@ var bullet_scene := preload("res://Entities/Bullet/bullet.tscn")
 
 @onready var hitbox : Area2D = $Hitbox
 @onready var sprite : Sprite2D = $Sprite2D
+@onready var collider : CollisionShape2D = $CollisionShape2D
 
 var firing_casts : Array[RayCast2D]
 
@@ -37,9 +38,11 @@ func die() -> void:
 	hitbox.set_deferred("monitoring", false)
 	hitbox.set_deferred("monitorable", false)
 	alive = false
+	collider.set_deferred("disabled", true)
 
 func reset() -> void:
 	sprite.show()
 	hitbox.set_deferred("monitoring", true)
 	hitbox.set_deferred("monitorable", true)
 	alive = true
+	collider.set_deferred("disabled", false)

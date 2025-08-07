@@ -2,6 +2,7 @@ class_name Villager extends Node2D
 
 @onready var hitbox : Area2D = $Hitbox
 @onready var sprite : Sprite2D = $Sprite2D
+@onready var collider : CollisionShape2D = $CollisionShape2D
 
 signal villager_died()
 
@@ -17,8 +18,10 @@ func die() -> void:
 	sprite.hide()
 	hitbox.set_deferred("monitoring", false)
 	hitbox.set_deferred("monitorable", false)
+	collider.set_deferred("disabled", true)
 
 func reset() -> void:
 	sprite.show()
 	hitbox.set_deferred("monitoring", true)
 	hitbox.set_deferred("monitorable", true)
+	collider.set_deferred("disabled", true)

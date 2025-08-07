@@ -2,14 +2,17 @@
 
 [ext_resource type="Script" uid="uid://b4o31h0a0m6tt" path="res://Entities/Enemies/enemy.gd" id="1_cxsjl"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_365vq"]
-size = Vector2(15, 15)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cxsjl"]
 size = Vector2(5, 5)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_365vq"]
+size = Vector2(15, 15)
+
 [node name="BaseEnemy" type="StaticBody2D" groups=["Enemy"]]
 script = ExtResource("1_cxsjl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_cxsjl")
 
 [node name="Hitbox" type="Area2D" parent="."]
 
@@ -19,6 +22,3 @@ shape = SubResource("RectangleShape2D_365vq")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 
 [node name="FiringPorts" type="Node2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_cxsjl")

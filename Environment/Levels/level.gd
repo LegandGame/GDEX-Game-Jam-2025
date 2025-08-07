@@ -38,6 +38,7 @@ var villager_death_count : int = 0
 var enemy_list : Array
 
 func play() -> void:
+	construction_manager.unload_construct()
 	# get villager list
 	if !villager_list:
 		lazy_init_villager_list()
@@ -95,6 +96,4 @@ func select_building(slot : int) -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.is_pressed() and event.button_index == MOUSE_BUTTON_LEFT:
-		construction_manager.build_construct(
-			construction_manager.loaded_construct, 
-			construction_manager.align_to_grid(get_viewport().get_mouse_position()))
+		construction_manager.build_loaded_construct()

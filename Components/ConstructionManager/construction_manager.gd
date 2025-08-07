@@ -32,9 +32,9 @@ func unload_construct() -> void:
 	overlap_shape.polygon = []
 	ready_to_build = false
 
-func build_construct(construct : ConstructInfo, position : Vector2i) -> void:
+func build_loaded_construct() -> void:
 	if not ready_to_build:
 		return
-	var new_construct = construct.construct_scene.instantiate()
-	new_construct.position = position
+	var new_construct = loaded_construct.construct_scene.instantiate()
+	new_construct.position = build_point.position
 	get_parent().call_deferred("add_child", new_construct)

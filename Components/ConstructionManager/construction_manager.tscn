@@ -8,6 +8,7 @@ script = ExtResource("1_pq3bw")
 [node name="BuildPoint" type="Marker2D" parent="."]
 
 [node name="PreviewSprite" type="Sprite2D" parent="BuildPoint"]
+modulate = Color(1, 1, 1, 0.588235)
 
 [node name="OverlapArea" type="Area2D" parent="BuildPoint"]
 collision_layer = 0

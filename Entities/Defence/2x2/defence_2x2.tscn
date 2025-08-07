@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cx7v2360rb43m" path="res://Entities/Defence/base_defence.tscn" id="1_30t15"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_30t15"]
-size = Vector2(32, 32)
+size = Vector2(30, 30)
 
 [node name="Defence_2x2" instance=ExtResource("1_30t15")]
 
