@@ -18,6 +18,7 @@ var villager_count : int
 var villager_death_count : int = 0
 var enemy_list : Array
 
+
 # building manager stuff
 @export var defence_building_list : Array[ConstructInfo]
 @export var enemy_building_list : Array[ConstructInfo]
@@ -61,9 +62,38 @@ func play() -> void:
 		await get_tree().create_timer(0.1).timeout
 	
 	# do something based on current_turn_type and villager_death_count
-	
+	match current_turn_type:
+		TURN.ALLY:
+			if villager_death_count == 0:
+				increment_turn_count()
+			else:
+				reset_turn()
+		TURN.ENEMY:
+			if villager_death_count == villager_count:
+				increment_turn_count()
+			else:
+				reset_turn()
 	# must be last!
 	is_activation_phase = false
+
+func increment_turn_count() -> void:
+	current_turn_count += 1
+	ui.update_turn_count(current_turn_count, turns_to_complete)
+	match current_turn_type:
+		TURN.ALLY:
+			current_turn_type = TURN.ENEMY
+		TURN.ENEMY:
+			current_turn_type = TURN.ALLY
+	if current_turn_count == turns_to_complete:
+		print("YOU WIN")
+
+func reset_turn() -> void: 
+	print("FAILURE!")
+	villager_death_count = 0
+	for v in villager_list:
+		v.reset()
+	for e in enemy_list:
+		e.reset()
 
 func lazy_init_villager_list() -> void:
 	villager_list = get_tree().get_nodes_in_group("Villager")
