@@ -8,9 +8,22 @@ class_name ConstructionManager extends Node2D
 @onready var overlap_shape : CollisionPolygon2D = $BuildPoint/OverlapArea/CollisionPolygon2D
 
 var loaded_construct : ConstructInfo
-var ready_to_build : bool = false
+var construct_is_loaded : bool = false
+var overlap_count : int = 0
 
 signal building_placed(construct)
+
+func _ready() -> void:
+	overlap.body_entered.connect(_on_body_entered)
+	overlap.body_exited.connect(_on_body_exited)
+
+
+func _on_body_entered(_body : Node2D) -> void:
+	overlap_count += 1
+	print(overlap_count)
+func _on_body_exited(_body : Node2D) -> void:
+	overlap_count -= 1
+	print(overlap_count)
 
 func align_to_grid(position : Vector2) -> Vector2i:
 	var x = (roundi(position.x) / grid_size) * grid_size
@@ -24,16 +37,22 @@ func load_construct(construct : ConstructInfo) -> void:
 	loaded_construct = construct
 	sprite.texture = construct.preview_sprite
 	overlap_shape.polygon = construct.build_area
-	ready_to_build = true
+	construct_is_loaded = true
 
 func unload_construct() -> void:
 	loaded_construct = ConstructInfo.new()
 	sprite.texture = Texture2D.new()
 	overlap_shape.polygon = []
-	ready_to_build = false
+	construct_is_loaded = false
+
+func ready_to_build() -> bool:
+	if construct_is_loaded and overlap_count == 0:
+		return true
+	else:
+		return false
 
 func build_loaded_construct() -> void:
-	if not ready_to_build:
+	if not ready_to_build():
 		return
 	var new_construct = loaded_construct.construct_scene.instantiate()
 	new_construct.position = build_point.position

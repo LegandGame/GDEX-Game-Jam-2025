@@ -48,6 +48,7 @@ func play() -> void:
 	enemy_list.sort_custom(sort_enemy_list)
 	for e in enemy_list:
 		await e.activate()
+		await get_tree().create_timer(0.1).timeout
 	
 	# do something based on current_turn_type and villager_death_count
 
@@ -73,6 +74,8 @@ func sort_enemy_list(a, b) -> bool:
 		return false
 # -------------------------
 
+# CONSTRUCTION MANAGER STUFF
+# ---------------------------
 func select_building(slot : int) -> void:
 	# prevent out of bounds
 	match current_turn_type:
@@ -84,7 +87,6 @@ func select_building(slot : int) -> void:
 			if slot >= enemy_building_list.size():
 				construction_manager.unload_construct()
 				return
-	
 	var temp_con
 	match current_turn_type:
 		TURN.ALLY:
@@ -92,7 +94,9 @@ func select_building(slot : int) -> void:
 		TURN.ENEMY:
 			temp_con = enemy_building_list[slot]
 	construction_manager.load_construct(temp_con)
-	
+
+func building_placed() -> void:
+	pass
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.is_pressed() and event.button_index == MOUSE_BUTTON_LEFT:
