@@ -11,7 +11,7 @@ var loaded_construct : ConstructInfo
 var construct_is_loaded : bool = false
 var overlap_count : int = 0
 
-signal building_placed(construct)
+signal building_placed
 
 func _ready() -> void:
 	overlap.body_entered.connect(_on_body_entered)
@@ -20,10 +20,8 @@ func _ready() -> void:
 
 func _on_body_entered(_body : Node2D) -> void:
 	overlap_count += 1
-	print(overlap_count)
 func _on_body_exited(_body : Node2D) -> void:
 	overlap_count -= 1
-	print(overlap_count)
 
 func align_to_grid(position : Vector2) -> Vector2i:
 	var x = (roundi(position.x) / grid_size) * grid_size
@@ -57,3 +55,4 @@ func build_loaded_construct() -> void:
 	var new_construct = loaded_construct.construct_scene.instantiate()
 	new_construct.position = build_point.position
 	get_parent().call_deferred("add_child", new_construct)
+	building_placed.emit()
