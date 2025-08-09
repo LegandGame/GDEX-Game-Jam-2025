@@ -53,6 +53,6 @@ func build_loaded_construct() -> void:
 	if not ready_to_build():
 		return
 	var new_construct = loaded_construct.construct_scene.instantiate()
-	new_construct.position = build_point.position
+	new_construct.position = build_point.position 
 	get_parent().call_deferred("add_child", new_construct)
 	building_placed.emit()

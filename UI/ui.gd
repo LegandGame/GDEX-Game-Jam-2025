@@ -6,6 +6,8 @@ extends CanvasLayer
 @onready var description_label : Label = %DescriptionLabel
 @onready var turns_label : Label = %TurnsLabel
 
+@onready var victory_panel := $YouWinPanel
+
 @onready var b1 : Button = %Building1Button
 @onready var b2 : Button = %Building2Button
 @onready var b3 : Button = %Building3Button
@@ -24,6 +26,7 @@ signal ui_building_button_pressed(number)
 func _ready() -> void:
 	play_button.pressed.connect(play_button_pressed)
 	reset_button.pressed.connect(reset_button_pressed)
+	victory_panel.hide()
 	
 	# the fuckery
 	b1.pressed.connect(bp1)
@@ -41,6 +44,9 @@ func play_button_pressed() -> void:
 
 func reset_button_pressed() -> void:
 	ui_reset_button_pressed.emit()
+
+func show_win_screen() -> void:
+	$YouWinPanel.show()
 
 func update_turn_count(current_turn : int, total_turn : int) -> void:
 	var new_string = "Turns: %d/%d"

@@ -12,13 +12,17 @@ size = Vector2(15, 15)
 script = ExtResource("1_cxsjl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(8, 8)
 shape = SubResource("RectangleShape2D_cxsjl")
 
 [node name="Hitbox" type="Area2D" parent="."]
+position = Vector2(8, 8)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource("RectangleShape2D_365vq")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+centered = false
 
 [node name="FiringPorts" type="Node2D" parent="."]
+position = Vector2(8, 8)

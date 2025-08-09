@@ -25,7 +25,7 @@ func activate() -> void:
 	for f in firing_casts:
 		var new_bullet = bullet_scene.instantiate()
 		new_bullet.direction = f.target_position.normalized()
-		new_bullet.position += f.target_position
+		new_bullet.position = $FiringPorts.position + f.target_position
 		call_deferred("add_child", new_bullet)
 		await new_bullet.bullet_complete
 

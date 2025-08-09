@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ConstructInfo" load_steps=4 format=3 uid="uid://c2j2l4tgymntm"]
+
+[ext_resource type="PackedScene" uid="uid://dattyqmmiu2qi" path="res://Entities/Enemies/Bat/enemy_bat_up.tscn" id="1_jyh11"]
+[ext_resource type="Script" uid="uid://4e88wcxtd77o" path="res://Components/ConstructionManager/construct_info.gd" id="1_vwxsh"]
+[ext_resource type="Texture2D" uid="uid://cbx8lt2wgg1s2" path="res://Assets/Textures/Kenny Tiny Dungeon/Tiles/tile_0120.png" id="2_bq2r2"]
+
+[resource]
+script = ExtResource("1_vwxsh")
+construct_scene = ExtResource("1_jyh11")
+preview_sprite = ExtResource("2_bq2r2")
+build_area = PackedVector2Array(1, 1, 15, 1, 15, 15, 1, 15)
+metadata/_custom_type_script = "uid://4e88wcxtd77o"

@@ -10,12 +10,14 @@ size = Vector2(5, 5)
 size = Vector2(15, 15)
 
 [node name="Villager" type="StaticBody2D" groups=["Villager"]]
+collision_priority = 0.1
 script = ExtResource("1_ib0av")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_26ugb")
 
 [node name="Hitbox" type="Area2D" parent="."]
+collision_priority = 2.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource("RectangleShape2D_ib0av")

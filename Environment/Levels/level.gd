@@ -5,6 +5,8 @@ extends Node2D
 @onready var ui := $UI
 @onready var construction_manager := $ConstructionManager
 
+signal level_victory
+
 # turn manager stuff
 @export_category("Level Parameters")
 @export var turns_to_complete : int
@@ -42,6 +44,12 @@ func reset_level() -> void:
 
 func _physics_process(delta: float) -> void:
 	construction_manager.update_build_point(get_viewport().get_mouse_position())
+
+func win_level() -> void:
+	level_victory.emit()
+	ui.show_win_screen()
+	await get_tree().create_timer(1.0).timeout
+	get_tree().change_scene_to_file("res://UI/MainMenu/main_menu.tscn")
 # -----------------------------------
 
 
@@ -85,7 +93,7 @@ func increment_turn_count() -> void:
 		TURN.ENEMY:
 			current_turn_type = TURN.ALLY
 	if current_turn_count == turns_to_complete:
-		print("YOU WIN")
+		win_level()
 
 func reset_turn() -> void: 
 	print("FAILURE!")
@@ -143,7 +151,6 @@ func select_building(slot : int) -> void:
 	
 	construction_manager.load_construct(temp_con)
 	selected_building_index = slot
-
 
 func on_building_placed() -> void:
 	match current_turn_type:
