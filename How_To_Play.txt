@@ -1,0 +1,17 @@
+How To Play
+
+On Even Numbered Turns your is to ensure that every villager survives (0 counts as even)
+On Odd Numbered Turns your goal is to ensure that every villager dies
+
+This is achieved by placing down defences and enemies respectivly.
+You can select a object to place down by clicking on one of the numbered bottons on the right and then clicking on a viable space
+Be careful as you only ever have so many defences and buildings to place down each level!
+
+once you're happy click play and all enemies will attack one after the other
+(Enemies attack in order from Left to Right, Top to Bottom)
+
+Enemies:
+	Crab: Fires a Projectile Downward
+	Wizard: Fires a Projectile to the Right
+	Rat: Fires a Projectile to the Left
+	Bat: Fires a Projectile Upward
